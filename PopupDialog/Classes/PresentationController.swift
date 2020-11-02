@@ -33,9 +33,9 @@ final internal class PresentationController: UIPresentationController {
     }()
 
     override func presentationTransitionWillBegin() {
-        
+
         guard let containerView = containerView else { return }
-        
+
         overlay.frame = containerView.bounds
         containerView.insertSubview(overlay, at: 0)
 
@@ -55,7 +55,6 @@ final internal class PresentationController: UIPresentationController {
         guard let presentedView = presentedView else { return }
 
         presentedView.frame = frameOfPresentedViewInContainerView
-        overlay.blurView.refresh()
     }
 
 }

@@ -32,17 +32,11 @@ final public class PopupDialogOverlayView: UIView {
     // MARK: - Appearance
 
     /// Turns the blur of the overlay view on or off
-    @objc public dynamic var blurEnabled: Bool {
-        get { return !blurView.isHidden }
-        set { blurView.isHidden = !newValue }
-    }
-    
+    @objc public dynamic var blurEnabled: Bool = false
+
     /// The blur radius of the overlay view
-    @objc public dynamic var blurRadius: CGFloat {
-        get { return blurView.blurRadius }
-        set { blurView.blurRadius = newValue }
-    }
-    
+    @objc public dynamic var blurRadius: CGFloat = 0
+
     /// Whether the blur view should allow for
     /// live rendering of the background
     @objc public dynamic var liveBlurEnabled: Bool {
@@ -55,7 +49,7 @@ final public class PopupDialogOverlayView: UIView {
             }
         }
     }
-    
+
     /// The background color of the overlay view
     @objc public dynamic var color: UIColor? {
         get { return overlay.backgroundColor }
@@ -72,9 +66,6 @@ final public class PopupDialogOverlayView: UIView {
 
     internal lazy var blurView: DynamicBlurView = {
         let blurView = DynamicBlurView(frame: .zero)
-        blurView.blurRadius = 8
-        blurView.trackingMode = .none
-        blurView.isDeepRendering = true
         blurView.tintColor = .clear
         blurView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         return blurView
@@ -116,7 +107,7 @@ final public class PopupDialogOverlayView: UIView {
 // MARK: - Deprecated
 
 extension PopupDialogOverlayView {
-    
+
     /// Whether the blur view should allow for
     /// dynamic rendering of the background
     @available(*, deprecated, message: "liveBlur has been deprecated and will be removed with future versions of PopupDialog. Please use isLiveBlurEnabled instead.")
@@ -124,5 +115,5 @@ extension PopupDialogOverlayView {
         get { return liveBlurEnabled }
         set { liveBlurEnabled = newValue }
     }
-    
+
 }
